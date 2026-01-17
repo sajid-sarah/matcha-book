@@ -55,17 +55,21 @@
 
 <div class="min-h-screen bg-gradient-to-b from-neutral-50 to-white">
 	<div class="mx-auto max-w-6xl px-5 py-12">
-		<header class="flex flex-col gap-6">
-			<div>
-				<p class="text-sm font-medium text-neutral-500">Personal tasting notes</p>
-				<h1 class="mt-2 text-3xl font-semibold tracking-tight text-neutral-900 sm:text-4xl">
-					Matcha book
-				</h1>
-				<p class="mt-3 max-w-2xl text-sm leading-relaxed text-neutral-600">
-					Notes with ratings. Built with SvelteKit + TypeScript.
-				</p>
-			</div>
-		</header>
+		<header class="rounded-3xl bg-gradient-to-b from-[#e6eddc] to-transparent p-4 sm:p-6">
+      <div class="flex flex-col gap-6">
+        <p class="text-sm font-medium text-neutral-500">
+          Personal tasting notes
+        </p>
+
+        <h1 class="text-3xl font-semibold tracking-tight text-neutral-900 sm:text-4xl">
+          Matcha book
+        </h1>
+
+        <p class="max-w-2xl text-sm leading-relaxed text-neutral-600">
+          Notes with ratings. Built with SvelteKit + TypeScript.
+        </p>
+      </div>
+    </header>
 
     <div class="mt-10">
       <!-- Tabs -->
