@@ -10,6 +10,29 @@
 	let style: 'all' | 'ceremonial' | 'premium' | 'basic' = 'all';
   let ritualStepIndex = 0;
 
+  const ritualImages = [
+    {
+      src: '/ritual/bowl.jpg',
+      alt: 'Warm bowl'
+    },
+    {
+      src: '/ritual/sift.jpg',
+      alt: 'Sift matcha'
+    },
+    {
+      src: '/ritual/scoop.jpg',
+      alt: 'Pour water'
+    },
+    {
+      src: '/ritual/whisk.jpg',
+      alt: 'Whisking matcha'
+    },
+    {
+      src: '/ritual/finish.jpg',
+      alt: 'Enjoy'
+    }
+  ];
+
   $: if (tab === 'ritual') query = '';
 
 	$: filtered = matchas
@@ -108,9 +131,27 @@
           {#if filtered.length === 0}
             <p class="mt-8 text-sm text-neutral-600">No matcha found. Try a different search.</p>
           {/if}
+
+        <!--Ritual Tab-->
         {:else}
-          <div class="max-w-xl">
-            <MatchaRitual bind:stepIndex={ritualStepIndex} />
+          <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:items-stretch">
+            <div class="max-w-xl">
+              <MatchaRitual bind:stepIndex={ritualStepIndex} />
+            </div>
+
+            <!-- RHS image panel -->
+            <div class="lg:sticky lg:top-6 flex justify-center">
+              <div class="w-fit max-w-lg">
+                <div class="flex h-116 w-full items-center justify-center overflow-hidden rounded-3xl bg-neutral-50">
+                  <img
+                    class="h-full w-full object-cover"
+                    src={ritualImages[ritualStepIndex]?.src}
+                    alt={ritualImages[ritualStepIndex]?.alt}
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+            </div>
           </div>
         {/if}
       </div>
