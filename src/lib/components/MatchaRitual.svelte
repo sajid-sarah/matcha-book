@@ -30,7 +30,7 @@
 			},
 			{
 				title: 'Finish',
-				desc: 'Slow down, lift the whisk gently, and drink immediately.'
+				desc: 'Slow down, lift the whisk gently, and enjoy your matcha ☁️'
 			}
 		]
 	};
@@ -82,7 +82,7 @@
 	$: progress = Math.round(((stepIndex + 1) / recipe.steps.length) * 100);
 </script>
 
-<section class="rounded-3xl border border-black/5 bg-white p-6 shadow-sm ring-1 ring-black/5">
+<section class="w-full rounded-3xl border border-black/5 bg-white p-6 shadow-sm ring-1 ring-black/5">
 	<header class="flex items-start justify-between gap-4">
 		<div>
 			<h2 class="text-lg font-semibold tracking-tight text-neutral-900">Matcha Ritual</h2>
@@ -127,45 +127,46 @@
 		</div>
 	</div>
 
-	<!-- Step -->
 	<div class="mt-6 rounded-2xl bg-neutral-50 p-5 ring-1 ring-neutral-100">
-		<div>
-			<h3 class="text-base font-semibold text-neutral-900">{current.title}</h3>
-			<p class="mt-1 text-sm leading-relaxed text-neutral-700">{current.desc}</p>
-		</div>
+    <!-- Title + Timer row -->
+    <div class="flex items-start justify-between gap-4">
+      <h3 class="text-base font-semibold text-neutral-900 py-2">
+        {current.title}
+      </h3>
 
-		{#if current.timerSec}
-			<div class="mt-4 flex flex-wrap items-center gap-2">
-				{#if !running}
-					<button
-						type="button"
-						on:click={() => startTimer(current.timerSec!)}
-						class="rounded-full bg-neutral-900 px-4 py-2 text-sm font-medium text-white hover:bg-neutral-800"
-					>
-						Start {current.timerSec}s timer
-					</button>
-				{:else}
-					<div class="rounded-full bg-white px-4 py-2 text-sm font-medium text-neutral-900 ring-1 ring-neutral-200">
-						{remaining}s
-					</div>
-					<button
-						type="button"
-						on:click={stopTimer}
-						class="rounded-full bg-neutral-100 px-4 py-2 text-sm font-medium text-neutral-700 ring-1 ring-neutral-200 hover:bg-neutral-200"
-					>
-						Stop
-					</button>
-				{/if}
-			</div>
-		{/if}
+      {#if current.timerSec}
+        <div class="shrink-0">
+          {#if !running}
+            <button
+              type="button"
+              on:click={() => startTimer(current.timerSec!)}
+              class="cursor-pointer rounded-full bg-neutral-900 px-4 py-2 text-sm font-medium text-white hover:bg-neutral-800"
+            >
+              Start timer {current.timerSec}s
+            </button>
+          {:else}
+            <div class="flex items-center gap-2">
+              <div class="rounded-full bg-white px-4 py-2 text-sm font-medium text-neutral-900 ring-1 ring-neutral-200">
+                {remaining}s
+              </div>
+              <button
+                type="button"
+                on:click={stopTimer}
+                class="cursor-pointer rounded-full bg-neutral-100 px-4 py-2 text-sm font-medium text-neutral-700 ring-1 ring-neutral-200 hover:bg-neutral-200"
+              >
+                Stop
+              </button>
+            </div>
+          {/if}
+        </div>
+      {/if}
+    </div>
 
-		{#if stepIndex === recipe.steps.length - 1}
-			<div class="mt-4 rounded-2xl bg-white p-4 text-sm text-neutral-700 ring-1 ring-neutral-200">
-				<span class="font-medium text-neutral-900">Finished.</span>
-				Take a moment and enjoy your matcha ☁️
-			</div>
-		{/if}
-	</div>
+    <!-- Description -->
+    <p class="mt-2 text-sm leading-relaxed text-neutral-700">
+      {current.desc}
+    </p>
+  </div>
 
 	<!-- Navigation -->
 	<footer class="mt-5 flex items-center justify-between">

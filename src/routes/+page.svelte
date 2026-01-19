@@ -138,21 +138,23 @@
 
         <!--Ritual Tab-->
         {:else}
-          <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:items-stretch">
-            <div class="max-w-xl">
-              <MatchaRitual bind:stepIndex={ritualStepIndex} />
-            </div>
+          <div class="flex justify-center">
+            <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 max-w-5xl">
+              <div class="w-full lg:w-[520px]">
+                <MatchaRitual bind:stepIndex={ritualStepIndex} />
+              </div>
 
-            <!-- RHS image panel -->
-            <div class="lg:sticky lg:top-6 flex justify-center">
-              <div class="w-fit max-w-lg">
-                <div class="flex h-116 w-full items-center justify-center overflow-hidden rounded-3xl bg-neutral-50">
-                  <img
-                    class="h-full w-full object-cover"
-                    src={ritualImages[ritualStepIndex]?.src}
-                    alt={ritualImages[ritualStepIndex]?.alt}
-                    loading="lazy"
-                  />
+              <!-- RHS image panel -->
+              <div class="lg:sticky lg:top-6 flex justify-center">
+                <div class="w-fit max-w-lg">
+                  <div class="flex h-116 w-full items-center justify-center overflow-hidden rounded-3xl bg-neutral-50">
+                    <img
+                      class="h-full w-full object-cover"
+                      src={ritualImages[ritualStepIndex]?.src}
+                      alt={ritualImages[ritualStepIndex]?.alt}
+                      loading="lazy"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
